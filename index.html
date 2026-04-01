@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script>window.__USER_ASSETS={"asset_1773247560589_jr4d86":"assets/uploads/01_Foran-icon-400x400ia-75.jpg","asset_1773247882300_bpjdjt":"assets/uploads/02_icon-22.webp","asset_1773248116409_bb101f":"assets/uploads/03_Foran_app.webp","asset_1773248341769_1t351a":"assets/uploads/04_Rider_app.webp","asset_1773250548103_4g2smw":"assets/uploads/05_okok.jpg"};</script>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Foran - Pakistan's 24/7 Super App</title>
@@ -8,8 +8,40 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    .flex{display:flex;}
+    .flex-row{flex-direction:row;}
+    .justify-content-center{justify-content:space-between;}
+    .align-center{align-items:center;}
+    .w-100{width:80%;}
+    .image-block{
+      background: #fff;
+      padding: 25px;
+      margin-left: 30px;
+    }
+    .videoFrame{
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .videoOverlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body>
+<video autoplay loop muted playsinline class="videoFrame">
+  <source src="assets/uploads/video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<div class="videoOverlay" aria-hidden="true"></div>
   <div id="loader"><div id="loaderWrap"><div id="loader-bar"></div></div><p style="margin-top:10px;color:rgba(255,255,255,.55);font:12px JetBrains Mono,monospace">Initializing Foran ecosystem...</p></div>
   <canvas id="bgCanvas"></canvas>
   <div class="cursor-dot" id="cursorDot"></div>
@@ -18,7 +50,7 @@
   <div id="overlay">
     <nav class="glass">
       <div class="brand">
-        <img src="window.__USER_ASSETS['asset_1773247560589_jr4d86']" alt="Foran Logo" class="brand-logo" data-asset-id="asset_1773247560589_jr4d86">
+        <img src="assets/uploads/01_Foran-icon-400x400ia-75.jpg" alt="Foran Logo" class="brand-logo" data-asset-id="asset_1773247560589_jr4d86">
         Foran
       </div>
       <div class="links">
@@ -41,9 +73,9 @@
 
   <main id="pageRoot">
     <!-- Section 1: Customers -->
-    <section id="delivery">
+    <section id="delivery" class="flex flex-row align-center justify-content-center">
       <div class="content-wrapper">
-        <img src="window.__USER_ASSETS['asset_1773247882300_bpjdjt']" alt="Foran Customer App Icon" class="section-app-icon animate-block" data-asset-id="asset_1773247882300_bpjdjt">
+        <img src="assets/uploads/02_icon-22.webp" alt="Foran Customer App Icon" class="section-app-icon animate-block" data-asset-id="asset_1773247882300_bpjdjt">
         <span class="kicker animate-block">Customer App</span>
         <h2 class="animate-block">Foran Delivery. Not "Kal". Now.</h2>
         <p class="section-lead animate-block">Order anything from stores around you—groceries, medicines, household essentials, baby products—delivered under 60 minutes. Anytime. Any day.</p>
@@ -51,19 +83,19 @@
         <ul class="benefits-list animate-block">
           <li>Under 60-minute delivery guarantee</li>
           <li>24/7 service, 365 days a year</li>
-          <li>No minimum order value required</li>
+          <li>Nearby stores within 5–10 km</li>
           <li>Real-time live order tracking</li>
         </ul>
 
         <div class="app-buttons animate-block">
-          <a href="#" class="store-btn">
+          <a href="https://play.google.com/store/apps/details?id=com.foranuser.userapp" class="store-btn">
             <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186c-.185.184-.425.282-.672.282-.247 0-.488-.098-.673-.283l-1.44-1.44c-.185-.185-.286-.43-.286-.68V3.936c0-.25.101-.495.286-.68l1.44-1.44c.37-.37.976-.37 1.346 0zm4.937 10.187L17.18 20.635l2.912-1.68c.558-.323.906-.917.906-1.562V6.608c0-.645-.348-1.24-.906-1.563l-2.912-1.68-8.634 8.634z"/></svg>
             <div class="store-btn-text">
               <span>Get it on</span>
               <span>Google Play</span>
             </div>
           </a>
-          <a href="#" class="store-btn">
+          <a href="https://apps.apple.com/in/app/foran-delivery-grocery-more/id6749823888" class="store-btn">
             <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.5 1.63-.03 3.13 1.1 4.11 1.1 1.03 0 2.98-1.34 5.02-1.14 1.07.05 3.43.43 4.99 2.7-4.1 2.45-3.45 7.29.47 9.05-.33.96-1.39 2.8-2.7 4.9zM13 3.5c.73-.83 1.21-1.96 1.08-3.11-1.05.04-2.3.7-3.04 1.58-.67.79-1.25 2.09-1.09 3.13 1.17.09 2.36-.73 3.05-1.6z"/></svg>
             <div class="store-btn-text">
               <span>Download on the</span>
@@ -72,12 +104,18 @@
           </a>
         </div>
       </div>
+      <div class="content-wrapper" style="text-align:right;">
+        <img src="assets/uploads/customer-app.png" style="display: inline;" alt="Foran Customer App" class="w-100 image-block section-app-icon animate-block" data-asset-id="asset_1773247882300_bpjdjt">
+      </div>
     </section>
 
     <!-- Section 2: Vendors -->
-    <section id="dukan">
+    <section id="dukan" class="flex flex-row align-center justify-content-center">
+      <div class="content-wrapper" style="text-align:left;">
+        <img src="assets/uploads/vendor-app.png" style="display: inline;" alt="Foran Customer App" class="w-100 image-block section-app-icon animate-block" data-asset-id="asset_1773247882300_bpjdjt">
+      </div>
       <div class="content-wrapper">
-        <img src="window.__USER_ASSETS['asset_1773248116409_bb101f']" alt="Foran Vendor App Icon" class="section-app-icon animate-block" data-asset-id="asset_1773248116409_bb101f">
+        <img src="assets/uploads/03_Foran_app.webp" alt="Foran Vendor App Icon" class="section-app-icon animate-block" data-asset-id="asset_1773248116409_bb101f">
         <span class="kicker animate-block">Vendor App</span>
         <h2 class="animate-block">Turn Your Store Into a 24/7 Digital Business.</h2>
         <p class="section-lead animate-block">Customers near you are searching right now. We help local kiryana stores and pharmacies reach them instantly and boost sales around the clock.</p>
@@ -86,22 +124,15 @@
           <li>Instant online visibility in your area</li>
           <li>Reach thousands of nearby customers</li>
           <li>Increase daily sales volume significantly</li>
-          <li>Simple digital inventory management</li>
+          <li>Quick same-day withdrawal</li>
         </ul>
 
         <div class="app-buttons animate-block">
-          <a href="#" class="store-btn">
+          <a href="https://play.google.com/store/apps/details?id=com.forandukan.dukanapp" class="store-btn">
             <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186c-.185.184-.425.282-.672.282-.247 0-.488-.098-.673-.283l-1.44-1.44c-.185-.185-.286-.43-.286-.68V3.936c0-.25.101-.495.286-.68l1.44-1.44c.37-.37.976-.37 1.346 0zm4.937 10.187L17.18 20.635l2.912-1.68c.558-.323.906-.917.906-1.562V6.608c0-.645-.348-1.24-.906-1.563l-2.912-1.68-8.634 8.634z"/></svg>
             <div class="store-btn-text">
               <span>Get it on</span>
               <span>Google Play</span>
-            </div>
-          </a>
-          <a href="#" class="store-btn">
-            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.5 1.63-.03 3.13 1.1 4.11 1.1 1.03 0 2.98-1.34 5.02-1.14 1.07.05 3.43.43 4.99 2.7-4.1 2.45-3.45 7.29.47 9.05-.33.96-1.39 2.8-2.7 4.9zM13 3.5c.73-.83 1.21-1.96 1.08-3.11-1.05.04-2.3.7-3.04 1.58-.67.79-1.25 2.09-1.09 3.13 1.17.09 2.36-.73 3.05-1.6z"/></svg>
-            <div class="store-btn-text">
-              <span>Download on the</span>
-              <span>App Store</span>
             </div>
           </a>
         </div>
@@ -109,9 +140,9 @@
     </section>
 
     <!-- Section 3: Riders -->
-    <section id="rider">
+    <section id="rider" class="flex flex-row align-center justify-content-center">
       <div class="content-wrapper">
-        <img src="window.__USER_ASSETS['asset_1773248341769_1t351a']" alt="Foran Rider App Icon" class="section-app-icon animate-block" data-asset-id="asset_1773248341769_1t351a">
+        <img src="assets/uploads/04_Rider_app.webp" alt="Foran Rider App Icon" class="section-app-icon animate-block" data-asset-id="asset_1773248341769_1t351a">
         <span class="kicker animate-block">Rider App</span>
         <h2 class="animate-block">Work When You Want. Earn What You Deserve.</h2>
         <p class="section-lead animate-block">Choose your hours, accept deliveries, and get paid. This isn't just delivery; it's building opportunity and being the engine that keeps Pakistan moving.</p>
@@ -120,25 +151,21 @@
           <li>Complete flexibility in working hours</li>
           <li>Instant earnings withdrawal options</li>
           <li>Performance-based bonuses and incentives</li>
-          <li>Rider insurance coverage included</li>
+          <li>Refer friends & get rewarded</li>
         </ul>
 
         <div class="app-buttons animate-block">
-          <a href="#" class="store-btn">
+          <a href="https://play.google.com/store/apps/details?id=com.foranrider.riderapp" class="store-btn">
             <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186c-.185.184-.425.282-.672.282-.247 0-.488-.098-.673-.283l-1.44-1.44c-.185-.185-.286-.43-.286-.68V3.936c0-.25.101-.495.286-.68l1.44-1.44c.37-.37.976-.37 1.346 0zm4.937 10.187L17.18 20.635l2.912-1.68c.558-.323.906-.917.906-1.562V6.608c0-.645-.348-1.24-.906-1.563l-2.912-1.68-8.634 8.634z"/></svg>
             <div class="store-btn-text">
               <span>Get it on</span>
               <span>Google Play</span>
             </div>
           </a>
-          <a href="#" class="store-btn">
-            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.5 1.63-.03 3.13 1.1 4.11 1.1 1.03 0 2.98-1.34 5.02-1.14 1.07.05 3.43.43 4.99 2.7-4.1 2.45-3.45 7.29.47 9.05-.33.96-1.39 2.8-2.7 4.9zM13 3.5c.73-.83 1.21-1.96 1.08-3.11-1.05.04-2.3.7-3.04 1.58-.67.79-1.25 2.09-1.09 3.13 1.17.09 2.36-.73 3.05-1.6z"/></svg>
-            <div class="store-btn-text">
-              <span>Download on the</span>
-              <span>App Store</span>
-            </div>
-          </a>
         </div>
+      </div>
+      <div class="content-wrapper" style="text-align:right;">
+        <img src="assets/uploads/rider-app.png" style="display: inline;" alt="Foran Customer App" class="w-100 image-block section-app-icon animate-block" data-asset-id="asset_1773247882300_bpjdjt">
       </div>
     </section>
 
@@ -147,7 +174,7 @@
       <div class="content-wrapper centered">
         <!-- Mockup Placeholder with zoom animation -->
         <div class="mockup-container animate-zoom">
-           <img src="window.__USER_ASSETS['asset_1773250548103_4g2smw']" alt="App Mockup" class="mockup-image" data-asset-id="asset_1773250548103_4g2smw">
+           <img src="assets/uploads/05_okok.jpg" alt="App Mockup" class="mockup-image" data-asset-id="asset_1773250548103_4g2smw">
         </div>
         <h2 class="animate-block">Foran Delivery</h2>
         <h3 class="subheadline animate-block">
