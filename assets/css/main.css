@@ -200,5 +200,6 @@
     @media (max-width: 900px) { body { cursor:auto; } .cursor-dot, .cursor-ring { display:none; } #overlay { padding:14px; } nav{left:14px;right:14px;top:12px;} .links { display:none; } section { min-height:auto; padding:80px 24px; align-items:flex-start!important; text-align:left!important; } h1{font-size:42px;} .benefits-list { grid-template-columns: 1fr; } section:nth-child(even) .benefits-list li { flex-direction: row; } section:nth-child(even) .app-buttons { justify-content: flex-start; }
       /* NEW: Ensure final section is centered on mobile too */
       #final-cta.centered-section { align-items: center !important; text-align: center !important; }
+      #final-cta .app-buttons { justify-content: center !important; }
       .closing-quote { font-size: 22px; }
     }

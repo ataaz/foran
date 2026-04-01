@@ -11,12 +11,23 @@
   <style>
     .flex{display:flex;}
     .flex-row{flex-direction:row;}
+    .flex-col{flex-direction:column;}
     .justify-content-center{justify-content:space-between;}
     .align-center{align-items:center;}
-    .w-100{width:80%;}
+    .section-split{
+      gap: clamp(32px, 5vw, 72px);
+      flex-wrap: wrap;
+    }
+    .section-split > .content-wrapper{
+      flex: 1 1 320px;
+      width: min(100%, 560px);
+    }
+    .w-100{
+      width: min(100%, 420px);
+    }
     .image-block{
       padding: 25px;
-      margin-left: 30px;
+      margin-left: 0;
     }
     .videoFrame{
       position: fixed;
@@ -32,6 +43,26 @@
       background: rgba(0, 0, 0, 0.55);
       z-index: 0;
       pointer-events: none;
+    }
+    @media (max-width: 900px){
+      .flex-row{
+        flex-direction: column !important;
+      }
+      .section-split{
+        gap: 28px;
+      }
+      .section-split > .content-wrapper{
+        flex-basis: auto;
+        width: 100%;
+        max-width: 100%;
+      }
+      .w-100{
+        width: min(100%, 360px);
+      }
+      .image-block{
+        padding: 14px;
+        margin: 0 auto;
+      }
     }
   </style>
 </head>
@@ -71,7 +102,7 @@
 
   <main id="pageRoot">
     <!-- Section 1: Customers -->
-    <section id="delivery" class="flex flex-row align-center justify-content-center">
+    <section id="delivery" class="flex flex-row align-center justify-content-center section-split">
       <div class="content-wrapper">
         <img src="assets/uploads/02_icon-22.webp" alt="Foran Customer App Icon" class="section-app-icon animate-block" data-asset-id="asset_1773247882300_bpjdjt">
         <span class="kicker animate-block">Customer App</span>
@@ -108,7 +139,7 @@
     </section>
 
     <!-- Section 2: Vendors -->
-    <section id="dukan" class="flex flex-row align-center justify-content-center">
+    <section id="dukan" class="flex flex-row align-center justify-content-center section-split">
       <div class="content-wrapper" style="text-align:left;">
         <img src="assets/uploads/vendor-app.png" style="display: inline;" alt="Foran Customer App" class="w-100 image-block section-app-icon animate-block" data-asset-id="asset_1773247882300_bpjdjt">
       </div>
@@ -138,7 +169,7 @@
     </section>
 
     <!-- Section 3: Riders -->
-    <section id="rider" class="flex flex-row align-center justify-content-center">
+    <section id="rider" class="flex flex-row align-center justify-content-center section-split">
       <div class="content-wrapper">
         <img src="assets/uploads/04_Rider_app.webp" alt="Foran Rider App Icon" class="section-app-icon animate-block" data-asset-id="asset_1773248341769_1t351a">
         <span class="kicker animate-block">Rider App</span>
