@@ -28,21 +28,28 @@
         const maxScroll = Math.max(doc.scrollHeight - innerHeight, 1);
         return Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
       }
+      function updateHero(){
+        const hero = document.getElementById('heroContent');
+        if (!hero) return;
+        const heroHideDistance = Math.max(window.innerHeight * 0.42, 280);
+        const heroScroll = Math.min(window.scrollY / heroHideDistance, 1);
+        const easedScroll = 1 - Math.pow(1 - heroScroll, 2);
+        const o = Math.max(0, 1 - easedScroll);
+        hero.style.opacity = String(o);
+        hero.style.visibility = o < 0.02 ? 'hidden' : 'visible';
+        hero.style.transform = 'translateY(' + (easedScroll * -72) + 'px)';
+        hero.style.pointerEvents = o < 0.08 ? 'none' : 'auto';
+      }
       function animate(){
         if (isReady && TOTAL_FRAMES > 0) targetFrame = getScrollProgress() * (TOTAL_FRAMES - 1);
         currentFrame += (targetFrame-currentFrame)*LERP_SPEED;
         const idx=Math.round(currentFrame);
         if(idx>=0&&idx<TOTAL_FRAMES) drawFrame(images[idx]);
-        const hero = document.getElementById('heroContent');
-        if (hero) {
-          const p = getScrollProgress();
-          const o = Math.max(0, 1 - p * 3.5); // Fade out hero faster as we scroll down
-          hero.style.opacity = String(o);
-          hero.style.transform = 'translateY(' + (p * -50) + 'px)';
-          hero.style.pointerEvents = o < 0.08 ? 'none' : 'auto';
-        }
+        updateHero();
         if (TOTAL_FRAMES > 0) requestAnimationFrame(animate);
       }
+      addEventListener('scroll', updateHero, { passive: true });
+      updateHero();
       
       // CURSOR LOGIC - KEEPS INTERACTION INTACT
       const dot=document.getElementById('cursorDot'), ring=document.getElementById('cursorRing'); let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my,lastRipple=0;
@@ -73,4 +80,25 @@
       // CHANGED: Observe new animation classes as well
       const animatedElements = document.querySelectorAll('.animate-block, .animate-zoom, .animate-fade');
       animatedElements.forEach(el => observer.observe(el));
+
+      const hoverImages = document.querySelectorAll('.section-app-icon');
+      hoverImages.forEach((el) => {
+        el.classList.add('hover-float');
+        el.addEventListener('mouseenter', () => {
+          if (window.innerWidth <= 900) return;
+          el.style.transform = 'translate3d(0,-12px,0) scale(1.04)';
+        });
+        el.addEventListener('mousemove', (event) => {
+          if (window.innerWidth <= 900) return;
+          const rect = el.getBoundingClientRect();
+          const offsetX = (event.clientX - rect.left) / rect.width - 0.5;
+          const offsetY = (event.clientY - rect.top) / rect.height - 0.5;
+          const moveX = offsetX * 28;
+          const moveY = offsetY * 28 - 12;
+          el.style.transform = 'translate3d(' + moveX + 'px,' + moveY + 'px,0) scale(1.04)';
+        });
+        el.addEventListener('mouseleave', () => {
+          el.style.transform = 'translate3d(0,0,0)';
+        });
+      });
     })();

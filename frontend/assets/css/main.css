@@ -7,7 +7,7 @@
     #loaderWrap { width:220px; height:3px; background:rgba(255,255,255,.12); border-radius:999px; overflow:hidden; }
     #loader-bar { height:100%; width:0%; background:#fff; transition:width .2s linear; }
     #overlay { position:fixed; inset:0; z-index:20; pointer-events:none; padding:24px; display:flex; flex-direction:column; }
-    #heroContent { transition:opacity .35s ease, transform .35s ease; }
+    #heroContent { transition:opacity .6s ease, transform .6s ease, visibility .6s ease; }
     .glass { background:rgba(0,0,0,.52); border:1px solid rgba(255,255,255,.24); backdrop-filter:blur(18px); }
     nav { pointer-events:auto; position:fixed; left:24px; right:24px; top:18px; display:flex; justify-content:space-between; align-items:center; padding:14px 18px; border-radius:16px; z-index:40; }
     
@@ -67,6 +67,14 @@
     .store-btn.large .store-btn-text span:last-child { font-size: 20px; }
 
     .section-app-icon { width: 80px; height: auto; border-radius: 18px; margin-bottom: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.25); display: block; }
+    .hover-float {
+      transition: transform .06s linear, box-shadow .12s ease-out;
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+    }
+    .hover-float:hover {
+      box-shadow: 0 24px 50px rgba(0,0,0,0.45);
+    }
 
     /* NEW: Final Section Styles */
     #final-cta {
